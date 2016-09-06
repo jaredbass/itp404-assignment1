@@ -1,1 +1,129 @@
 # itp404-assignment1
+
+<script>
+
+// Q1
+
+var reviewsData = {
+  data: [
+    {
+      id: 1,
+      attributes: {
+        'review-title': 'Terrible!',
+        'stars': 1,
+        'cost': 'high'
+      }
+    },
+    {
+      id: 2,
+      attributes: {
+        'review-title': 'Decent place',
+        'stars': 3,
+        'cost': 'average'
+      }
+    },
+    {
+      id: 3,
+      attributes: {
+        'review-title': 'I would come again',
+        'stars': 3.5,
+        'cost': 'average'
+      }
+    },
+    {
+      id: 4,
+      attributes: {
+        'review-title': 'So good, and cheap!',
+        'stars': 4,
+        'cost': 'low-average'
+      }
+    },
+    {
+      id: 5,
+      attributes: {
+        'review-title': 'Good, but pricey!',
+        'stars': 4,
+        'cost': 'high'
+      }
+    }
+  ]
+};
+
+function extractReviews(reviewData) {
+  // your implementation
+ 
+  var reviews = reviewsData.data.map(function(review){
+    return {
+      id: review.id,
+      title: review.attributes['review-title'],
+      stars: review.attributes['stars'],
+      cost: review.attributes['cost']
+    };
+  });
+  return reviews;
+}
+
+console.log(extractReviews(reviewsData));
+
+
+// Q2
+
+var reviews = [
+  { id: 1, title: 'Terrible!', stars: 1, cost: 'high' },
+  { id: 2, title: 'Decent place', stars: 3, cost: 'average' },
+  { id: 3, title: 'I would come again', stars: 3.5, cost: 'average' },
+  { id: 4, title: 'So good, and cheap!', stars: 4, cost: 'low-average' },
+  { id: 5, title: 'Good, but pricey!', stars: 4, cost: 'high' }
+];
+
+function findGoodReviews(reviews) {
+  // your implementation
+
+  var reviewsWithGood = reviews.filter(function(review){
+                                  return review.title.match(/Good/gi);    
+});
+  return reviewsWithGood;
+}
+
+  console.log(findGoodReviews(reviews));
+
+
+// Q3
+
+var reviews = [
+  { id: 1, title: 'Terrible!', stars: 1, cost: 'high' },
+  { id: 2, title: 'Decent place', stars: 3, cost: 'average' },
+  { id: 3, title: 'I would come again', stars: 3.5, cost: 'average' },
+  { id: 4, title: 'So good, and cheap!', stars: 4, cost: 'low-average' },
+  { id: 5, title: 'Good, but pricey!', stars: 4, cost: 'high' }
+];
+
+function classifyReviewsByCost(reviews) {
+  // your implementation
+  var totals = reviews.reduce(function(addedTotals, review)
+{
+   
+     if (addedTotals.hasOwnProperty(review.cost)){
+       addedTotals[review.cost] = addedTotals[review.cost] +1;
+       
+     }
+    
+    
+    else { 
+           addedTotals[review.cost] = 1; 
+    }
+                       
+    return addedTotals;
+       
+                              }, {});
+      console.log(totals);
+  
+}
+
+console.log(classifyReviewsByCost(reviews));
+
+</script>
+
+
+
+
